@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wordpress VN oEmbed
 Version: 1.0.0
-Description: Enable OpenSearch on your website
+Description: Hoox Hỗ trợ oEmbed cho các website chia sẻ nhạc ở Việt Nam
 Author: Vô Minh
 Plugin URI: http://laptrinh.senviet.org
 */
