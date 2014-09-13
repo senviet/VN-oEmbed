@@ -5,7 +5,28 @@ Donate link: http://laptrinh.senviet.org
 Requires at least: 3.0.1
 Tested up to: 4.0
 
-Allow you to embed any website you want
+Hỗ trợ oEmbed cho các website chia sẻ nhạc ở Việt Nam
 
 == Description ==
-Allow you to add any website you want. You add reg, you add any things.
+Cho phép bạn embed các trang nhạc ở Việt Nam dễ hơn. Chỉ cần chép link của các bài hát và dán vào nội dung bài viết, là ngay lập tức bài hát đó được embed.
+
+1.  **Zing MP3** : http://mp3.zing.vn
+Các định dạng hỗ trợ
+
+    *   Bài hát đơn
+    *   Album
+    *   Playlist
+    *   Video, clip
+
+2.  **Nhạc Của Tui** : http://nhaccuatui.com
+Các định dạng hỗ trợ
+
+    *   Bài hát đơn
+    *   Video
+    *   Album
+
+3.  **Nhạc số** : http://nhacso.net
+Các định dạng hỗ trợ
+
+    *   Bài hát đơn
+    *   Video
