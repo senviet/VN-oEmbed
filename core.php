@@ -9,9 +9,9 @@ class Wpos_Code
     function __construct()
     {
         $this->rulers = array(
-            'mp3.zing.vn' => new EmbedRuler('#https?://(www\.)?(mp3\.zing\.vn)/(bai-hat|video-clip|album|playlist)/([a-zA-Z,\-]+)/([a-zA-Z,\d]*).html#i', 'generateZingEmbedCode'),
-            'nhaccuatui.com' => new EmbedRuler('#https?://(www\.)?(nhaccuatui\.com)/(bai-hat|video|playlist)/([a-zA-Z,\-,\d]+).([a-zA-Z,\d]*).html#i', 'generateNhaccuatuiEmbedCode'),
-            'nhacso.net' => new EmbedRuler('#https?://(www\.)?(nhacso\.net)/(nghe-nhac|xem-video)/([a-zA-Z,\-,\d]+).([a-zA-Z,\d,=?]*).html#i', 'generateNhacsoEmbedCode')
+            'mp3.zing.vn' => new EmbedRuler('#https?://(www\.)?mp3.zing.vn/(bai-hat|video-clip|album|playlist)/([a-zA-Z,\-]+)/([a-zA-Z,\d]*).html#i', 'generateZingEmbedCode'),
+            'nhaccuatui.com' => new EmbedRuler('#https?://(www\.)?nhaccuatui.com/(bai-hat|video|playlist)/([a-zA-Z,\-,\d]+).([a-zA-Z,\d]*).html#i', 'generateNhaccuatuiEmbedCode'),
+            'nhacso.net' => new EmbedRuler('#https?://(www\.)?nhacso.net/(nghe-nhac|xem-video)/([a-zA-Z,\-,\d]+).([a-zA-Z,\d,=?]*).html#i', 'generateNhacsoEmbedCode')
         );
     }
 
@@ -38,30 +38,30 @@ class Wpos_Code
     4.	[27-52]	`Lang-Nghe-Tim-Em-Dong-Nhi`
     5.	[53-61]	`ZW6B9ZWZ`
      */
-    public function generateZingEmbedCode($matches, $attr, $url, $rawattr)
-    {
-        $embed = $url;
-        $pattern = '';
-        switch ($matches[3]) {
-            case 'bai-hat':
-                $pattern = '<iframe class="zingmp3embed song-embed" width="410" height="100" src="http://mp3.zing.vn/embed/song/%1$s?autostart=false" frameborder="0" allowfullscreen="true"></iframe>';
-                break;
-            case 'video-clip':
-                $pattern = '<iframe class="zingmp3embed video-embed" width="450" height="291" src="http://mp3.zing.vn/embed/video/%1$s?autostart=false" frameborder="0" allowfullscreen="true"></iframe>';
-                break;
-            case 'album':
-            case 'playlist':
-                $pattern = '<iframe class="zingmp3embed album_playlist-embed" width="410" height="300" src="http://mp3.zing.vn/embed/album/%1$s?autostart=false" frameborder="0" allowfullscreen="true"></iframe>';
-                break;
-        }
-        if($pattern) {
-            $embed = sprintf(
-                $pattern,
-                esc_attr($matches[5])
-            );
-        }
-        return apply_filters('generateZingEmbedCode', $embed, $matches, $attr, $url, $rawattr);
+public function generateZingEmbedCode($matches, $attr, $url, $rawattr)
+{
+    $embed = $url;
+    $pattern = '';
+    switch ($matches[2]) {
+        case 'bai-hat':
+            $pattern = '<iframe class="zingmp3embed song-embed" width="410" height="100" src="http://mp3.zing.vn/embed/song/%1$s?autostart=false" frameborder="0" allowfullscreen="true"></iframe>';
+            break;
+        case 'video-clip':
+            $pattern = '<iframe class="zingmp3embed video-embed" width="450" height="291" src="http://mp3.zing.vn/embed/video/%1$s?autostart=false" frameborder="0" allowfullscreen="true"></iframe>';
+            break;
+        case 'album':
+        case 'playlist':
+            $pattern = '<iframe class="zingmp3embed album_playlist-embed" width="410" height="300" src="http://mp3.zing.vn/embed/album/%1$s?autostart=false" frameborder="0" allowfullscreen="true"></iframe>';
+            break;
     }
+    if ($pattern) {
+        $embed = sprintf(
+            $pattern,
+            esc_attr($matches[4])
+        );
+    }
+    return apply_filters('generateZingEmbedCode', $embed, $matches, $attr, $url, $rawattr);
+}
 
     /*
         1.	[7-11]	`www.`
@@ -74,7 +74,7 @@ class Wpos_Code
     {
         $embed = $url;
         $pattern = '';
-        switch ($matches[3]) {
+        switch ($matches[2]) {
             case 'bai-hat':
                 $pattern = '<object class="nctembed song-embed" width="300" height="286">  <param name="movie" value="http://www.nhaccuatui.com/m/%1$s" />  <param name="quality" value="high" />  <param name="wmode" value="transparent" />  <param name="allowscriptaccess" value="always" /> <param name="allowfullscreen" value="true"/> <param name="flashvars" value="autostart=false" />  <embed src="http://www.nhaccuatui.com/m/%1$s" flashvars="target=blank&autostart=false" allowscriptaccess="always" allowfullscreen="true" quality="high" wmode="transparent" type="application/x-shockwave-flash" width="300" height="286"></embed></object>';
                 break;
@@ -85,14 +85,15 @@ class Wpos_Code
                 $pattern = '<object class="nctembed album_playlist-embed" width="300" height="428">  <param name="movie" value="http://www.nhaccuatui.com/l/%1$s" />  <param name="quality" value="high" />  <param name="wmode" value="transparent" />  <param name="allowscriptaccess" value="always" /> <param name="allowfullscreen" value="true"/> <param name="flashvars" value="autostart=false" />  <embed src="http://www.nhaccuatui.com/l/%1$s" flashvars="target=blank&autostart=false" allowscriptaccess="always" allowfullscreen="true" quality="high" wmode="transparent" type="application/x-shockwave-flash" width="300" height="428"></embed></object>';
                 break;
         }
-        if($pattern) {
+        if ($pattern) {
             $embed = sprintf(
                 $pattern,
-                esc_attr($matches[5])
+                esc_attr($matches[4])
             );
         }
         return apply_filters('generateNhaccuatuiEmbedCode', $embed, $matches, $attr, $url, $rawattr);
     }
+
     /*
         2.	[7-17]	`nhacso.net`
         3.	[18-28]	`nghe-album`
@@ -104,7 +105,7 @@ class Wpos_Code
     {
         $embed = $url;
         $pattern = '';
-        switch ($matches[3]) {
+        switch ($matches[2]) {
             case 'nghe-nhac':
                 $pattern = '<object width="500" height="56" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0">
                                  <param name="movie" value="http://st.nhacso.net/f/v3/Playlistjs.swf">
@@ -128,10 +129,10 @@ class Wpos_Code
                              </object>';
                 break;
         }
-        if($pattern) {
+        if ($pattern) {
             $embed = sprintf(
                 $pattern,
-                esc_attr($matches[5])
+                esc_attr($matches[4])
             );
         }
         return apply_filters('generateNhacsoEmbedCode', $embed, $matches, $attr, $url, $rawattr);

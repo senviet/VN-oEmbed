@@ -8,14 +8,14 @@
  */
 class EmbedRuler
 {
-    private $regex;
-    private $callback;
+private $regex;
+private $callback;
 
-    function __construct($regex, $callback)
-    {
-        $this->callback = $callback;
-        $this->regex = $regex;
-    }
+function __construct($regex, $callback)
+{
+    $this->callback = $callback;
+    $this->regex = $regex;
+}
 
     /**
      * @return mixed
