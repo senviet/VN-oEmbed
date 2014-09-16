@@ -30,3 +30,8 @@ Các định dạng hỗ trợ
 
     *   Bài hát đơn
     *   Video
+
+= Dành cho lập trình =
+1. **Github** : (VN-oEmbed)[https://github.com/senviet/VN-oEmbed/]
+
+2. **Hướng dẫn code** : (hướng dẫn tại Sen Việt)[http://laptrinh.senviet.org/wordpress-plugin/wordpress-oembed-ho-tro-cho-cac-trang-nhac/]
